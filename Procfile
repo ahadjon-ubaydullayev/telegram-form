@@ -1,1 +1,1 @@
-web: gunicorn simdroid.wsgi --log-file -
+web: gunicorn taxbot.wsgi --log-file -
