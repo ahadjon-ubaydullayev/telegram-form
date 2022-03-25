@@ -24,12 +24,12 @@ def index(request):
 
 @bot.message_handler(commands=['start'])
 def greeting(message):
-    main_menu = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
+    main_menu = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     btn1 = types.KeyboardButton("Sudlar haqida ma\'lumot")
     btn2 = types.KeyboardButton("Interaktive xizmatlar")
     btn3 = types.KeyboardButton("Sudga murojaat")
-    btn4 = types.KeyboardButton("Sozlash")
-    main_menu.add(btn1, btn2, btn3, btn4)
+    # btn4 = types.KeyboardButton("Sozlash")
+    main_menu.add(btn1, btn2, btn3)
     bot.send_message(message.from_user.id,
                   'Menyudan kerakli bo\'limni tanlang:\n', reply_markup=main_menu)
    
@@ -46,8 +46,8 @@ def get_info(message):
 	btn1 = types.KeyboardButton("Sudlar haqida ma\'lumot")
 	btn2 = types.KeyboardButton("Interaktive xizmatlar")
 	btn3 = types.KeyboardButton("Sudga murojaat")
-	btn4 = types.KeyboardButton("Sozlash")
-	main_menu.add(btn1, btn2, btn3, btn4)
+	# btn4 = types.KeyboardButton("Sozlash")
+	main_menu.add(btn1, btn2, btn3)
 
 	sud_types = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
 	btn1_sud_info = types.KeyboardButton("Oliy sud")
@@ -55,7 +55,7 @@ def get_info(message):
 	btn3_sud_info = types.KeyboardButton("Ma\'muriy sudlar")
 	btn4_sud_info = types.KeyboardButton("Fuqarolik ishlarni bo\'yicha sudlar")
 	btn5_sud_info = types.KeyboardButton("Iqtisodiy sudlar")
-	btn6_sud_info = types.KeyboardButton("Orqaga")
+	btn6_sud_info = types.KeyboardButton("Orqaga ↩️")
 	sud_types.add(btn1_sud_info, btn2_sud_info, btn3_sud_info, btn4_sud_info, btn5_sud_info, btn6_sud_info)
 
 	category = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
@@ -63,7 +63,7 @@ def get_info(message):
 	# btn2_c = types.KeyboardButton("Qarorlar to\'plami")
 	btn3_c = types.KeyboardButton("Davo namunalari")
 	# btn4_c = types.KeyboardButton("Davlar boji kalkulyatori")
-	btn5_c = types.KeyboardButton("Orqaga")
+	btn5_c = types.KeyboardButton("Orqaga ↩️")
 	category.add(btn1_c, btn3_c, btn5_c)
 
 	client_request = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
@@ -73,12 +73,12 @@ def get_info(message):
 	btn4_cr = types.KeyboardButton("Jinoyat ishlari bo\'yicha sudga murojaat")
 	btn5_cr = types.KeyboardButton("Axborot texnologiyalari sudiga murojaat")
 	btn6_cr = types.KeyboardButton("Korrupsiyaga qarshi kurash sudiga murojaat")
-	btn7_cr = types.KeyboardButton("Orqaga")
+	btn7_cr = types.KeyboardButton("Orqaga ↩️")
 	client_request.add(btn1_cr, btn2_cr, btn3_cr, btn4_cr, btn5_cr, btn6_cr, btn7_cr)
 
 	secondary_markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
 	btn1_s = types.KeyboardButton("Bosh menu")
-	btn2_s = types.KeyboardButton("Orqaga")
+	btn2_s = types.KeyboardButton("Orqaga ↩️")
 	secondary_markup.add(btn1_s, btn2_s)
 
 	case_types = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
@@ -89,10 +89,10 @@ def get_info(message):
 	case_types.add(btn1_case, btn2_case, btn3_case, btn4_case, btn1_s, btn2_s)
 
 	cancel_markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
-	btn1_cancel = types.KeyboardButton("Bekor qilish")
+	btn1_cancel = types.KeyboardButton("Bekor qilish 🚫")
 	cancel_markup.add(btn1_cancel)
 
-	if message.text == 'Bekor qilish':
+	if message.text == 'Bekor qilish 🚫':
 		bot.send_message(message.from_user.id, 'Ishingiz turini tanlang:', reply_markup=case_types)
 	
 	if message.text == 'Bosh menu':
@@ -137,7 +137,37 @@ def get_info(message):
 		step.step = 1
 		step.save()
 	
-	if message.text == "Orqaga":
+	if message.text == "Fuqarolik ishlarni bo\'yicha sudga murojaat":
+		step.step = 1
+		step.save()
+		bot.send_message(message.from_user.id, "Hurmatli foydalanuvchi, ushbu telegram bot orqali faqat ishlarni o'z vaqtida, to'g'ri ko'rish va hal etish, ishlar ko'rilishini asossiz cho'zilishiga baham berish, sudlar faoliyatidagi byurokratiya holatlari va korrupsya bilan kurashishga bog'liq bolgan murojaatlar qabul qilinadi. Savol va takliflarni yozing. Ularni matn (matnning maksimal hajmi 3000 ta belgidan oshmasligi kerak) ko'rinishida yuborishingiz mumkin.", reply_markup=secondary_markup)
+	
+	if message.text == "Iqtisodiy sudga murojaat":
+		step.step = 1
+		step.save()
+		bot.send_message(message.from_user.id, "Hurmatli foydalanuvchi, ushbu telegram bot orqali faqat ishlarni o'z vaqtida, to'g'ri ko'rish va hal etish, ishlar ko'rilishini asossiz cho'zilishiga baham berish, sudlar faoliyatidagi byurokratiya holatlari va korrupsya bilan kurashishga bog'liq bolgan murojaatlar qabul qilinadi. Savol va takliflarni yozing. Ularni matn (matnning maksimal hajmi 3000 ta belgidan oshmasligi kerak) ko'rinishida yuborishingiz mumkin.", reply_markup=secondary_markup)
+	
+	if message.text == "Ma'muriy sudga murojaat":
+		step.step = 1
+		step.save()
+		bot.send_message(message.from_user.id, "Hurmatli foydalanuvchi, ushbu telegram bot orqali faqat ishlarni o'z vaqtida, to'g'ri ko'rish va hal etish, ishlar ko'rilishini asossiz cho'zilishiga baham berish, sudlar faoliyatidagi byurokratiya holatlari va korrupsya bilan kurashishga bog'liq bolgan murojaatlar qabul qilinadi. Savol va takliflarni yozing. Ularni matn (matnning maksimal hajmi 3000 ta belgidan oshmasligi kerak) ko'rinishida yuborishingiz mumkin.", reply_markup=secondary_markup)
+	
+	if message.text == "Jinoyat ishlari bo'yicha sudga murojaat":
+		step.step = 1
+		step.save()
+		bot.send_message(message.from_user.id, "Hurmatli foydalanuvchi, ushbu telegram bot orqali faqat ishlarni o'z vaqtida, to'g'ri ko'rish va hal etish, ishlar ko'rilishini asossiz cho'zilishiga baham berish, sudlar faoliyatidagi byurokratiya holatlari va korrupsya bilan kurashishga bog'liq bolgan murojaatlar qabul qilinadi. Savol va takliflarni yozing. Ularni matn (matnning maksimal hajmi 3000 ta belgidan oshmasligi kerak) ko'rinishida yuborishingiz mumkin.", reply_markup=secondary_markup)
+	
+	if message.text == "Axborot texnologiyalari sudiga murojaat":
+		step.step = 1
+		step.save()
+		bot.send_message(message.from_user.id, "Hurmatli foydalanuvchi, ushbu telegram bot orqali faqat ishlarni o'z vaqtida, to'g'ri ko'rish va hal etish, ishlar ko'rilishini asossiz cho'zilishiga baham berish, sudlar faoliyatidagi byurokratiya holatlari va korrupsya bilan kurashishga bog'liq bolgan murojaatlar qabul qilinadi. Savol va takliflarni yozing. Ularni matn (matnning maksimal hajmi 3000 ta belgidan oshmasligi kerak) ko'rinishida yuborishingiz mumkin.", reply_markup=secondary_markup)
+	
+	if message.text == "Korrupsiyaga qarshi kurash sudiga murojaat":
+		step.step = 1
+		step.save()
+		bot.send_message(message.from_user.id, "Hurmatli foydalanuvchi, ushbu telegram bot orqali faqat ishlarni o'z vaqtida, to'g'ri ko'rish va hal etish, ishlar ko'rilishini asossiz cho'zilishiga baham berish, sudlar faoliyatidagi byurokratiya holatlari va korrupsya bilan kurashishga bog'liq bolgan murojaatlar qabul qilinadi. Savol va takliflarni yozing. Ularni matn (matnning maksimal hajmi 3000 ta belgidan oshmasligi kerak) ko'rinishida yuborishingiz mumkin.", reply_markup=secondary_markup)
+	
+	if message.text == "Orqaga ↩️":
 		if step.step == 1:
 			bot.send_message(message.from_user.id, 'Kerakli bo\'limni tanlang:', reply_markup=main_menu)
 		if step.step == 2:
