@@ -1,0 +1,1 @@
+web: gunicorn anketabot.wsgi --log-file -
