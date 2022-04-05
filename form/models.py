@@ -15,6 +15,12 @@ class Applicant(models.Model):
 	rank = models.CharField(max_length=512, blank=True, null=True)
 	tel_number = models.CharField(max_length=512, blank=True, null=True)
 	active = models.BooleanField(default=False)
+	work_experience = models.CharField(max_length=256, blank=True, null=True)
+	it_level = models.CharField(max_length=256, blank=True, null=True)
+	languages = models.CharField(max_length=256, blank=True, null=True)
+
+	def __str__(self):
+		return self.full_name
 
 
 
