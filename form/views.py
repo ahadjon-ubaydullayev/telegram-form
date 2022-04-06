@@ -182,7 +182,7 @@ def register_view(message):
         client.step += 1
         client.save()
         bot.send_message(message.from_user.id,
-                  "*Telefon raqamingizni 9x xxx xx xx ko'rinishida kiriting ☎️:\n*", reply_markup=main_markup, parse_mode='Markdown')
+                  "*Telefon raqamingizni 9xxxxxxxx ko'rinishida kiriting ☎️:\n*", reply_markup=main_markup, parse_mode='Markdown')
 
     
     elif client.step == 10:
@@ -191,8 +191,7 @@ def register_view(message):
             client.step += 1
             client.save()
             bot.send_message(message.from_user.id,
-                             '*Avval qayerda ishlagansiz yoki amaliyot qilgansiz?\n*\
-                             (Tashkilot nomi va ishlash vaqti davomiyligi)', reply_markup=main_markup, parse_mode='Markdown')
+                             '*Avval qayerda ishlagansiz yoki amaliyot qilgansiz?\n\n\n*(Tashkilot nomi va ishlash vaqti davomiyligi)', reply_markup=main_markup, parse_mode='Markdown')
         else:
             bot.send_message(message.from_user.id,
                              '*Iltimos to\'g\'ri ma\'lumot kiriting🙅‍♂️*', parse_mode='Markdown')

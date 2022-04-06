@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-eityqofn568ji)qh(_zf9zg_&#9%&n-1f%qllosdf5p#4bqho+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["form-filling-bot.herokuapp.com", "0c1e-213-230-99-241.ngrok.io", '127.0.0.1']
+ALLOWED_HOSTS = ["form-filling-bot.herokuapp.com", "d6c0-213-230-99-241.ngrok.io", '127.0.0.1']
 
 
 # Application definition
